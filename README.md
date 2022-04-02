@@ -49,7 +49,7 @@ We can observe that class labels are unbalanced. In both training and validation
 
 ## Detector block
 
-![detector block](img/Detector block.jpg)
+![detector block](img/Detector_block.jpg)
 
 Given Input of a series with 5 channels and length 512, detector block will first apply an 1D same-padding convolution to increase the channels into 256, followed by batch normalization and leaky ReLU. The process repeated with 512 channels, and maximum pooling applied. This will shrink the series length by half into 256. The process repeated twice with channel size 512 and 256, and maximum pooling applied, producing a series with length 128 and channel 256 as output. 
 
@@ -127,25 +127,25 @@ In the following, 1-year trading simulations using everyday model prediction on 
 
 Return of our model is 1.21%, compared with -5.30% in NASDAQ. From the fact that most of time the black lines are flat, we can observe that the model tends not holding stocks. Also, most of the time the model cannot outperform the NASDAQ, except in the last month when NASDAQ drop a lot. Hence, it is believed that the model cannot significantly increase profitability.
 
-![trading simulation (train)](img/PnL train.jpg)
+![trading simulation (train)](img/PnL_train.jpg)
 
 ### Testing set
 
 Return of our model is 0.21%, compared with 37.17% in NASDAQ. Because the model tends not holding stocks, the model performance cannot catch up the raising trend of NASDAQ, resulting in a huge loss in potential profitability. 
 
-![trading simulation (test)](img/PnL test.jpg)
+![trading simulation (test)](img/PnL_test.jpg)
 
 ### Validation set
 
 Return of our model is 5.26%, compared with 2.93% in NASDAQ. Although the model slightly outperformed the NASDAQ at the end, their differences are not significant. 
 
-![trading simulation (validation)](img/PnL val.jpg)
+![trading simulation (validation)](img/PnL_val.jpg)
 
 # Filter visualization
 
 When a model is well-performed, we can receive insight from the model. Although our model is unsatisfactory, we still would like to take this chance to visualize the 1st layer filters in the model. Local receptive field of 1st layer CNN filters are 3-day OHLCV. For each filter, we have scanned through the test and validation sets to find a 3-day sample with maximum absolute response as filter’s representation. The representations are displayed below. The green and red elements representing candle sticks of each day, and black lines representing volatility, renormalized into zero mean and unit variance. 
 
-![CNN filter visualization](img/CNN filter viz.jpg)
+![CNN filter visualization](img/CNN_filter_viz.jpg)
 
 To further classify each filter into different market trends, we have set the output of 1st layer CNN to be a particular filter, and let the model determine which class it is corresponding to. 
 
@@ -160,15 +160,15 @@ as input and assign the predicted class by $argmax(\mathcal{F}(𝑥))$. However,
 
 Note that this kind of evaluation do not have solid ground, and the GRU layer may distort the result, because interaction of features across time may be crucial but ignored in this simulation. In this setting, the uptrend filters are:
 
-![CNN filter vizualization (uptrend)](img/CNN filter viz (uptrend).jpg)
+![CNN filter vizualization (uptrend)](img/CNN_filter_viz_(uptrend).jpg)
 
 The downtrend filters are:
 
-![CNN filter visualization](img/CNN filter viz (download).jpg)
+![CNN filter visualization](img/CNN_filter_viz_(download).jpg)
 
 The steady filters are:
 
-![CNN filter visualization (steady)](img/CNN filter viz (steady).jpg)
+![CNN filter visualization (steady)](img/CNN_filter_viz_(steady).jpg)
 
 # Conclusion
 
