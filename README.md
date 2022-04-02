@@ -164,7 +164,7 @@ Note that this kind of evaluation do not have solid ground, and the GRU layer ma
 
 The downtrend filters are:
 
-![CNN filter visualization](img/CNN_filter_viz_(download).jpg)
+![CNN filter visualization](img/CNN_filter_viz_(downtrend).jpg)
 
 The steady filters are:
 
