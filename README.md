@@ -150,12 +150,15 @@ When a model is well-performed, we can receive insight from the model. Although 
 To further classify each filter into different market trends, we have set the output of 1st layer CNN to be a particular filter, and let the model determine which class it is corresponding to. 
 
 In mathematic expression, for each filter index $idx$, let the model after 1st layer CNN be $\mathcal{F}: ℝ^{512×256} → ℝ^3$, we have used $𝑥 = [𝑎_{𝑖𝑗}] ∈ ℝ^{512×256}$,
+
+```math
 $a_{ij}= 
 \begin{cases}
     1,& \text{if } j = idx\\
     0,& \text{otherwise}
 \end{cases}
 $
+```
 as input and assign the predicted class by $argmax(\mathcal{F}(𝑥))$. However, because the following batch normalization layer will zero out all signals, and we have added random noise into 𝑥 using $\epsilon_{ij} \sim \mathcal{U}(-0.005, 0.005)$, resulting in $x_{salted} = [\epsilon_{ij} + \delta_{j, idx}]$, where $\delta$ is the Kronecker delta function. 
 
 Note that this kind of evaluation do not have solid ground, and the GRU layer may distort the result, because interaction of features across time may be crucial but ignored in this simulation. In this setting, the uptrend filters are:
